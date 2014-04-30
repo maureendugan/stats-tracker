@@ -18,7 +18,7 @@
   <script type="text/x-handlebars" id="teams">
     <div class="col-md-6">
     <ul>
-    {{#each team in controller}}
+    {{#each team in controller itemController = 'team'}}
       <div class="col-md-9">
         <li>{{team.name}}
       </div>
@@ -55,6 +55,7 @@
   <script src="js/models/team.js"></script>
   <script src="js/controllers/teams_controller.js"></script>
   <script src="js/controllers/new_team_controller.js"></script>
+  <script src="js/controllers/team_controller.js"></script>
   <!-- to activate the test runner, add the "?test" query string parameter -->
   <script src="tests/runner.js"></script>
 </body>
