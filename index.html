@@ -3,30 +3,46 @@
 <head>
   <meta charset="utf-8">
   <title>Ember Starter Kit</title>
-  <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <body>
   <script type="text/x-handlebars">
+  <div class="container">
     <h2>Stat Tracker</h2>
 
     {{outlet}}
+  </div>
   </script>
 
   <script type="text/x-handlebars" id="teams">
+    <div class="col-md-6">
     <ul>
-    {{#each item in model}}
-      <li>{{item.name}}</li>
+    {{#each team in controller}}
+      <div class="col-md-9">
+        <li>{{team.name}}
+      </div>
+      <div class="col-md-3">
+      <button {{action deleteTeam}} class="btn btn-danger btn-xs">X</button></li>
+      </div>
     {{/each}}
     </ul>
 
-    <h3>New Team</h3>
+    {{#link-to 'new_team' class="btn btn-warning"}}Add Team{{/link-to}}
+    </div>
 
-        <div class="form-group">
-          <label for="name">Team Name</label>
-          {{input type="text" class="form-control" id="name" placeholder="Portland Blazers..." value=newTeamName}}
-        </div>
-        <button {{action createTeam}} class="btn btn-primary">Submit</button>
+    <div class="col-md-6">
+      {{outlet}}
+    </div>
+  </script>
+
+  <script type="text/x-handlebars" id="new_team">
+    <h3>New Team</h3>
+      <div class="form-group">
+        <label for="name">Team Name</label>
+        {{input type="text" class="form-control" id="name" placeholder="Portland Blazers..." value=name}}
+      </div>
+    <button {{action createTeam}} class="btn btn-primary">Submit</button>
   </script>
 
   <script src="js/libs/jquery-1.10.2.js"></script>
@@ -38,6 +54,7 @@
   <script src="js/router.js"></script>
   <script src="js/models/team.js"></script>
   <script src="js/controllers/teams_controller.js"></script>
+  <script src="js/controllers/new_team_controller.js"></script>
   <!-- to activate the test runner, add the "?test" query string parameter -->
   <script src="tests/runner.js"></script>
 </body>
