@@ -4,6 +4,6 @@ Stats.Router.map(function() {
 
 Stats.TeamsRoute = Ember.Route.extend({
   model: function() {
-    return ['portland', 'seattle', 'houston'];
+    return this.store.find('team');
   }
 });
