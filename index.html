@@ -10,7 +10,6 @@
   <script type="text/x-handlebars">
   <h2>Stat Tracker</h2>
   <div class="container">
-
     {{outlet}}
   </div>
   </script>
@@ -20,7 +19,7 @@
     <ul>
     {{#each team in controller itemController = 'team'}}
       <div class="col-md-9">
-        <li>{{#link-to 'team' team}}{{team.name}}{{/link-to}}
+        <li>{{#link-to 'team' team}}{{team.name}}{{/link-to}} {{team.id}}
       </div>
       <div class="col-md-3">
       <button {{action deleteTeam}} class="btn btn-danger btn-xs">X</button></li>
@@ -29,6 +28,7 @@
     </ul>
 
     {{#link-to 'new_team' class="btn btn-warning"}}Add Team{{/link-to}}
+    {{#link-to 'players' class="btn btn-warning"}}Show Players{{/link-to}}
     </div>
 
     <div class="col-md-6">
@@ -44,11 +44,40 @@
       </div>
     <button {{action createTeam}} class="btn btn-primary">Submit</button>
   </script>
+
+  <script type="text/x-handlebars" id="new_player">
+    <h3>New Player</h3>
+      <div class="form-group">
+        <label for="name">Player Name</label>
+        {{input type="text" class="form-control" id="name" placeholder="Moe..." value=name}}
+      </div>
+    <button {{action addPlayer}} class="btn btn-primary">Submit</button>
+  </script>
+
+  <script type="text/x-handlebars" id="players">
+    <div class="col-md-6">
+    <h2>Players</h2>
+    <ul>
+    {{#each player in controller}}
+      <div class="col-md-9">
+        <li>{{player.name}} {{player.id}} <u>{{player.team.name}}</u></li>
+      </div>
+    {{/each}}
+    </ul>
+    </div>
+  </script>
+
   <script type="text/x-handlebars" id="team">
     <h3>{{name}}</h3>
     <p>Players:</p>
-    <p>{{#link-to 'teams'}}Hide{{/link-to}}</p>
-    <p>Add Players</p>
+    <ul>
+      {{#each player in model.players}}
+        <li>{{player.name}}</li>
+      {{/each}}
+    </ul>
+    <p>{{#link-to 'teams' class="btn btn-primary"}}Hide{{/link-to}}</p>
+    <p>{{#link-to 'new_player'class="btn btn-info"}}Add Player{{/link-to}}</p>
+    {{outlet}}
   </script>
 
   <script src="js/libs/jquery-1.10.2.js"></script>
@@ -59,9 +88,11 @@
   <script src="js/app.js"></script>
   <script src="js/router.js"></script>
   <script src="js/models/team.js"></script>
+  <script src="js/models/player.js"></script>
   <script src="js/controllers/teams_controller.js"></script>
   <script src="js/controllers/new_team_controller.js"></script>
   <script src="js/controllers/team_controller.js"></script>
+  <script src="js/controllers/new_player_controller.js"></script>
   <!-- to activate the test runner, add the "?test" query string parameter -->
   <script src="tests/runner.js"></script>
 </body>

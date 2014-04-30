@@ -1,7 +1,10 @@
 Stats.Router.map(function() {
   this.resource('teams', { path: '/' }, function(){
     this.resource('new_team', { path: '/teams/new'});
-    this.resource('team', { path: '/teams/:id'});
+    this.resource('players', { path: '/players'});
+    this.resource('team', { path: '/teams/:id'}, function(){
+      this.resource('new_player', { path: 'players/new'});
+    });
   });
 });
 
@@ -20,6 +23,35 @@ Stats.TeamRoute = Ember.Route.extend({
 Stats.NewTeamRoute = Ember.Route.extend({
   model: function() {
     return this.store.createRecord('team');
+  },
+
+  deactivate: function() {
+    var model = this.get('controller.model');
+    model.rollback();
+    if (model.get('isNew')) {
+      model.deleteRecord();
+    }
+  },
+
+  actions: {
+    willTransition: function(transition) {
+      var model = this.get('controller.model');
+      if (model.get('isDirty') && !confirm('You have unsaved changes. They will be lost if you continue!')) {
+        transition.abort();
+      }
+    }
+  }
+});
+
+Stats.PlayersRoute = Ember.Route.extend({
+  model: function() {
+    return this.store.find('player');
+  }
+});
+
+Stats.NewPlayerRoute = Ember.Route.extend({
+  model: function() {
+    return this.store.createRecord('player');
   },
 
   deactivate: function() {
