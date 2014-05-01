@@ -8,9 +8,12 @@ Stats.NewPlayerController = Ember.ObjectController.extend({
       var player = this.get('model');
       var controller = this;
 
+
       player.save();
-      team.get('players').pushObject(player);
-      controller.transitionToRoute('team', team);
+        team.get('players').pushObject(player);
+      team.save().then(function() {
+        controller.transitionToRoute('team', team);
+      });
     }
   }
 });
