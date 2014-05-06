@@ -16,12 +16,12 @@
         <li>{{#link-to 'team' team}}{{team.name}}{{/link-to}} {{team.id}}
       </div>
       <div class="col-md-3">
-      <button {{action deleteTeam}} class="btn btn-danger btn-xs">X</button></li>
+      <button {{action deleteTeam}} class="btn btn-danger btn-xs">X</button></l
       </div>
     {{/each}}
     </ul>
     {{#link-to 'new_team' class="btn btn-warning btn-sm"}}Add Team{{/link-to}}
-    {{#link-to 'players' class="btn btn-warning btn-sm"}}Show Players{{/link-to}}
+    {{#link-to 'players' class="btn btn-warning btn-sm"}}Show Players{{/link-to
     </div>
 
     <div class="col-md-7">
@@ -33,7 +33,7 @@
     <h3>New Team</h3>
       <div class="form-group">
         <label for="name">Team Name</label>
-        {{input type="text" class="form-control" id="name" placeholder="Team name..." value=name}}
+        {{input type="text" class="form-control" id="name" placeholder="Team na
       </div>
     <button {{action createTeam}} class="btn btn-primary">Submit</button>
   </script>
@@ -42,7 +42,7 @@
     <h3>New Player</h3>
       <div class="form-group">
         <label for="name">Player Name</label>
-        {{input type="text" class="form-control" id="name" placeholder="Player name..." value=name}}
+        {{input type="text" class="form-control" id="name" placeholder="Player
       </div>
     <button {{action addPlayer}} class="btn btn-primary">Submit</button>
   </script>
@@ -67,7 +67,7 @@
       {{/each}}
     </ul>
     <p>{{#link-to 'index' class="btn btn-primary btn-sm"}}Hide{{/link-to}}
-    {{#link-to 'new_player'class="btn btn-info btn-sm"}}Add Player{{/link-to}}</p>
+    {{#link-to 'new_player'class="btn btn-info btn-sm"}}Add Player{{/link-to}}<
     {{outlet}}
   </script>
 

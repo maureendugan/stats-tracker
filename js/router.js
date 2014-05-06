@@ -36,7 +36,8 @@ Stats.NewTeamRoute = Ember.Route.extend({
   actions: {
     willTransition: function(transition) {
       var model = this.get('controller.model');
-      if (model.get('isDirty') && !confirm('You have unsaved changes. They will be lost if you continue!')) {
+      if (model.get('isDirty') && !confirm('You have unsaved changes. They will
+        be lost if you continue!')) {
         transition.abort();
       }
     }
@@ -71,4 +72,3 @@ Stats.NewPlayerRoute = Ember.Route.extend({
     }
   }
 });
-
