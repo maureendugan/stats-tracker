@@ -57,7 +57,7 @@
     <h3>All Players</h3>
     <ul>
     {{#each player in controller}}
-      <li>{{player.name}}: {{player.team.name}}</li>
+      <li>{{#link-to 'player' player}}{{player.name}}{{/link-to}}: {{player.team.name}}</li>
     {{/each}}
     </ul>
   </script>
