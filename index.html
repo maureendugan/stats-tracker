@@ -9,39 +9,39 @@
 <body>
   <script type="text/x-handlebars">
   <h2>Stat Tracker</h2>
-  <div class="container">
     {{outlet}}
-  </div>
   </script>
 
   <script type="text/x-handlebars" id="teams">
-    <div class="col-md-5">
-    <ul>
-    {{#each team in controller itemController = 'team'}}
-      <div class="col-md-9">
-        <li>{{#link-to 'team' team}}{{team.name}}{{/link-to}} {{team.id}}
-      </div>
-      <div class="col-md-3">
-      <button {{action deleteTeam}} class="btn btn-danger btn-xs">X</button></li>
-      </div>
-    {{/each}}
-    </ul>
-    {{#link-to 'new_team' class="btn btn-warning btn-sm"}}Add Team{{/link-to}}
-    {{#link-to 'players' class="btn btn-warning btn-sm"}}Show Players{{/link-to}}
+    <div class="col-md-4">
+      <ul>
+      {{#each team in controller itemController = 'team'}}
+        <div class="col-md-9">
+          <li>{{#link-to 'team' team}}{{team.name}}{{/link-to}} {{team.id}}
+        </div>
+        <div class="col-md-3">
+        <button {{action deleteTeam}} class="btn btn-danger btn-xs">X</button></li>
+        </div>
+      {{/each}}
+      </ul>
+      {{#link-to 'new_team' class="btn btn-warning btn-sm"}}Add Team{{/link-to}}
+      {{#link-to 'players' class="btn btn-warning btn-sm"}}Show Players{{/link-to}}
     </div>
 
-    <div class="col-md-7">
+    <div class="col-md-8">
       {{outlet}}
     </div>
   </script>
 
   <script type="text/x-handlebars" id="new_team">
-    <h3>New Team</h3>
-      <div class="form-group">
-        <label for="name">Team Name</label>
-        {{input type="text" class="form-control" id="name" placeholder="Team name..." value=name}}
-      </div>
-    <button {{action createTeam}} class="btn btn-primary">Submit</button>
+    <div class="col-md-4">
+      <h3>New Team</h3>
+        <div class="form-group">
+          <label for="name">Team Name</label>
+          {{input type="text" class="form-control" id="name" placeholder="Team name..." value=name}}
+        </div>
+      <button {{action createTeam}} class="btn btn-primary">Submit</button>
+    </div>
   </script>
 
   <script type="text/x-handlebars" id="new_player">
@@ -54,27 +54,30 @@
   </script>
 
   <script type="text/x-handlebars" id="players">
-    <h2>All Players</h2>
+    <h3>All Players</h3>
     <ul>
     {{#each }}
       <li>{{name}}</li>
     {{/each}}
     </ul>
-    </div>
   </script>
 
   <script type="text/x-handlebars" id="team">
-    <h3>{{name}}</h3>
-    <ul>
-      {{#each player in model.players}}
-        <li>{{player.name}}</li>
-      {{else}}
-        <li>No players yet</li>
-      {{/each}}
-    </ul>
-    <p>{{#link-to 'teams' class="btn btn-primary btn-sm"}}Hide{{/link-to}}
-    {{#link-to 'new_player'class="btn btn-info btn-sm"}}Add Player{{/link-to}}</p>
-    {{outlet}}
+    <div class="col-md-6">
+      <h3>{{name}}</h3>
+      <ul>
+        {{#each player in model.players}}
+          <li>{{player.name}}</li>
+        {{else}}
+          <li>No players yet</li>
+        {{/each}}
+      </ul>
+      <p>{{#link-to 'teams' class="btn btn-primary btn-sm"}}Hide{{/link-to}}
+      {{#link-to 'new_player'class="btn btn-info btn-sm"}}Add Player{{/link-to}}</p>
+    </div>
+    <div class="col-md-6">
+      {{outlet}}
+    </div>
   </script>
 
   <script src="js/libs/jquery-1.10.2.js"></script>
