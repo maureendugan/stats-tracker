@@ -4,6 +4,7 @@ Stats.Router.map(function() {
     this.resource('players', { path: '/players'});
     this.resource('team', { path: '/teams/:id'}, function(){
       this.resource('new_player', { path: 'players/new'});
+      this.resource('player', {path: 'players/:id'});
     });
   });
 });
@@ -69,6 +70,12 @@ Stats.NewPlayerRoute = Ember.Route.extend({
         transition.abort();
       }
     }
+  }
+});
+
+Stats.PlayerRoute = Ember.Route.extend({
+  model: function(params) {
+    return this.store.find('player', params.id)
   }
 });
 
