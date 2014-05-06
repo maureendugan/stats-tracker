@@ -65,6 +65,12 @@
   <script type="text/x-handlebars" id="player">
     <h3>{{name}}</h3>
     <p>Team: {{model.team.name}}</p>
+    <ul>
+    {{#each shots}}
+      <li>{{attempt}}</li>
+    {{else}}
+      <p>No shots yet</p>
+    {{/each}}
   </script>
 
   <script type="text/x-handlebars" id="team">

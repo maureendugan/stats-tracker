@@ -8,7 +8,8 @@ Stats.Player.FIXTURES = [
   {
     id: 1,
     name: "Jon",
-    team: 1
+    team: 1,
+    shots: [1,2,4]
   },
   {
     id: 2,
@@ -23,7 +24,8 @@ Stats.Player.FIXTURES = [
   {
     id: 4,
     name: "Mance",
-    team: 2
+    team: 2,
+    shots: [3]
   },
   {
     id: 5,
