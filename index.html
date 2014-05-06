@@ -63,8 +63,12 @@
   </script>
 
   <script type="text/x-handlebars" id="player">
-    <h3>{{name}}</h3>
+    <h3>{{model.name}}</h3>
     <p>Team: {{model.team.name}}</p>
+    <p>Game: {{game}}</p>
+    <p>Total shots: {{shotsCount}}</p>
+    <p>Percentage: %</p>
+    <p>Total Points: </p>
     <ul>
     {{#each shots}}
       <li>{{attempt}}</li>
@@ -106,6 +110,7 @@
   <script src="js/controllers/team_controller.js"></script>
   <script src="js/controllers/new_player_controller.js"></script>
   <script src="js/controllers/players_controller.js"></script>
+  <script src="js/controllers/player_controller.js"></script>
   <!-- to activate the test runner, add the "?test" query string parameter -->
   <script src="tests/runner.js"></script>
 </body>
