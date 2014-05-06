@@ -1,14 +1,14 @@
 Stats.Router.map(function() {
-  this.resource('index', { path: '/' }, function(){
-    this.resource('new_team', { path: '/new'});
+  this.resource('teams', { path: '/' }, function(){
+    this.resource('new_team', { path: '/teams/new'});
     this.resource('players', { path: '/players'});
-    this.resource('team', { path: '/:id'}, function(){
+    this.resource('team', { path: '/teams/:id'}, function(){
       this.resource('new_player', { path: 'players/new'});
     });
   });
 });
 
-Stats.IndexRoute = Ember.Route.extend({
+Stats.TeamsRoute = Ember.Route.extend({
   model: function() {
     return this.store.find('team');
   }

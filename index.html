@@ -7,9 +7,15 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <script type="text/x-handlebars" id="index">
+  <script type="text/x-handlebars">
   <h2>Stat Tracker</h2>
-  <div class="col-md-5">
+  <div class="container">
+    {{outlet}}
+  </div>
+  </script>
+
+  <script type="text/x-handlebars" id="teams">
+    <div class="col-md-5">
     <ul>
     {{#each team in controller itemController = 'team'}}
       <div class="col-md-9">
@@ -33,7 +39,7 @@
     <h3>New Team</h3>
       <div class="form-group">
         <label for="name">Team Name</label>
-        {{input type="text" class="form-control" id="name" placeholder="Team na
+        {{input type="text" class="form-control" id="name" placeholder="Team name..." value=name}}
       </div>
     <button {{action createTeam}} class="btn btn-primary">Submit</button>
   </script>
@@ -42,7 +48,7 @@
     <h3>New Player</h3>
       <div class="form-group">
         <label for="name">Player Name</label>
-        {{input type="text" class="form-control" id="name" placeholder="Player
+        {{input type="text" class="form-control" id="name" placeholder="Player name..." value=name}}
       </div>
     <button {{action addPlayer}} class="btn btn-primary">Submit</button>
   </script>
@@ -66,8 +72,8 @@
         <li>No players yet</li>
       {{/each}}
     </ul>
-    <p>{{#link-to 'index' class="btn btn-primary btn-sm"}}Hide{{/link-to}}
-    {{#link-to 'new_player'class="btn btn-info btn-sm"}}Add Player{{/link-to}}<
+    <p>{{#link-to 'teams' class="btn btn-primary btn-sm"}}Hide{{/link-to}}
+    {{#link-to 'new_player'class="btn btn-info btn-sm"}}Add Player{{/link-to}}</p>
     {{outlet}}
   </script>
 
@@ -80,7 +86,7 @@
   <script src="js/router.js"></script>
   <script src="js/models/team.js"></script>
   <script src="js/models/player.js"></script>
-  <script src="js/controllers/index_controller.js"></script>
+  <script src="js/controllers/teams_controller.js"></script>
   <script src="js/controllers/new_team_controller.js"></script>
   <script src="js/controllers/team_controller.js"></script>
   <script src="js/controllers/new_player_controller.js"></script>
