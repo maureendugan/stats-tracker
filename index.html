@@ -7,15 +7,9 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <script type="text/x-handlebars">
+  <script type="text/x-handlebars" id="index">
   <h2>Stat Tracker</h2>
-  <div class="container">
-    {{outlet}}
-  </div>
-  </script>
-
-  <script type="text/x-handlebars" id="teams">
-    <div class="col-md-5">
+  <div class="col-md-5">
     <ul>
     {{#each team in controller itemController = 'team'}}
       <div class="col-md-9">
@@ -72,7 +66,7 @@
         <li>No players yet</li>
       {{/each}}
     </ul>
-    <p>{{#link-to 'teams' class="btn btn-primary btn-sm"}}Hide{{/link-to}}
+    <p>{{#link-to 'index' class="btn btn-primary btn-sm"}}Hide{{/link-to}}
     {{#link-to 'new_player'class="btn btn-info btn-sm"}}Add Player{{/link-to}}</p>
     {{outlet}}
   </script>
@@ -86,7 +80,7 @@
   <script src="js/router.js"></script>
   <script src="js/models/team.js"></script>
   <script src="js/models/player.js"></script>
-  <script src="js/controllers/teams_controller.js"></script>
+  <script src="js/controllers/index_controller.js"></script>
   <script src="js/controllers/new_team_controller.js"></script>
   <script src="js/controllers/team_controller.js"></script>
   <script src="js/controllers/new_player_controller.js"></script>
