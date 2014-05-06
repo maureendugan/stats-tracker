@@ -50,6 +50,7 @@ Stats.PlayersRoute = Ember.Route.extend({
   }
 });
 
+
 Stats.NewPlayerRoute = Ember.Route.extend({
   model: function() {
     return this.store.createRecord('player');
