@@ -2,9 +2,9 @@ Stats.Router.map(function() {
   this.resource('teams', { path: '/' }, function(){
     this.resource('new_team', { path: '/teams/new'});
     this.resource('players', { path: '/players'});
+    this.resource('player', {path: 'players/:player_id'});
     this.resource('team', { path: '/teams/:id'}, function(){
       this.resource('new_player', { path: 'players/new'});
-      this.resource('player', {path: 'players/:id'});
     });
   });
 });

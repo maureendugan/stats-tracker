@@ -56,15 +56,15 @@
   <script type="text/x-handlebars" id="players">
     <h3>All Players</h3>
     <ul>
-    {{#each }}
-      <li>{{name}}</li>
+    {{#each player in controller}}
+      <li>{{player.name}}: {{player.team.name}}</li>
     {{/each}}
     </ul>
   </script>
 
   <script type="text/x-handlebars" id="player">
     <h3>{{name}}</h3>
-    <p>Team: </p>
+    <p>Team: {{model.team.name}}</p>
   </script>
 
   <script type="text/x-handlebars" id="team">
