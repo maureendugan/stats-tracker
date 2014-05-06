@@ -17,9 +17,9 @@
   <script type="text/x-handlebars" id="teams">
     <div class="col-md-5">
     <ul>
-    {{#each}}
+    {{#each team in controller itemController = 'team'}}
       <div class="col-md-9">
-        <li>{{#link-to 'team' this}}{{name}}{{/link-to}} {{id}}
+        <li>{{#link-to 'team' team}}{{team.name}}{{/link-to}} {{team.id}}
       </div>
       <div class="col-md-3">
       <button {{action deleteTeam}} class="btn btn-danger btn-xs">X</button></li>
